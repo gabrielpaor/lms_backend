@@ -9,10 +9,18 @@ class ProfessProfile(models.Model):
         ("F", "Female"),
     )
 
+    STATUS = (
+        ("Active", "Acitive"),
+        ("Offline", "Offline"),
+        ("Do Not Disturb", "Do not Disturb"),
+        ("Idle", "Idle"),
+    )
+
     name = models.CharField(max_length=200, null=True)
     gender = models.CharField(max_length=1, choices=GENDER)
+    status = models.CharField(max_length=200, null=True, choices=STATUS)
     numofstud = models.IntegerField()
-    contactno = models.IntegerField(max_length=12)
+    contactno = models.IntegerField()
     address = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=50, null=True)
     bdate = models.DateField()
@@ -33,13 +41,16 @@ class Schoolworks(models.Model):
     schoolwork = models.CharField(max_length=2, choices=WORKS)
     title = models.CharField(max_length=100, null=True)
     content = models.CharField(max_length=1000, null=True)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.schoolwork
 
 
-# class Grades(models.Model):
-#      subgrades = models.FloatField()
+class Grades(models.Model):
+    grades = models.FloatField()
+
+    
 # relations to all students
 
 
