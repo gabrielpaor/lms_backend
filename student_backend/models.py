@@ -1,5 +1,5 @@
 from django.db import models
-Upfrom teacher_backend.models import *
+from teacher_backend.models import *
 
 # Create your models here.
 
@@ -56,6 +56,3 @@ class StudGrades(models.Model):
 # relations to all the upcoming assignments, quizz, and activities
 class Reminder(models.Model):
     reminders = models.ForeignKey(Schoolworks, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.reminders
