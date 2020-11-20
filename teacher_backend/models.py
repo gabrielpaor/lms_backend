@@ -32,15 +32,15 @@ class ProfessProfile(models.Model):
 
 class Schoolworks(models.Model):
     WORKS = (
-        ("As", "Assignments"),
-        ("Qu", "Quiz"),
-        ("Ac", "Activities"),
-        ("Pr", "Projects"),
+        ("Assignments", "Assignments"),
+        ("Quiz", "Quiz"),
+        ("Activities", "Activities"),
+        ("Projects", "Projects"),
     )
 
-    schoolwork = models.CharField(max_length=2, choices=WORKS)
+    schoolwork = models.CharField(max_length=60, choices=WORKS)
     title = models.CharField(max_length=100, null=True)
-    content = models.CharField(max_length=1000, null=True)
+    content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -50,7 +50,7 @@ class Schoolworks(models.Model):
 class Grades(models.Model):
     grades = models.FloatField()
 
-    
+
 # relations to all students
 
 

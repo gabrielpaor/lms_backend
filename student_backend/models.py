@@ -30,6 +30,7 @@ class StudentProfile(models.Model):
         return self.name
 
 
+# relations per teacher = subject
 class Subject(models.Model):
     subcode = models.CharField(max_length=50, null=True)
     subname = models.CharField(max_length=200, null=True)
@@ -56,3 +57,6 @@ class StudGrades(models.Model):
 # relations to all the upcoming assignments, quizz, and activities
 class Reminder(models.Model):
     reminders = models.ForeignKey(Schoolworks, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.reminders
