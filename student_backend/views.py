@@ -5,26 +5,26 @@ from django.http import HttpResponse
 
 
 def dashboard(request):
-    return render(request)
- 
-
-def profile(request):
-    return render(request)
+    return render(request, "student_backend/studmain.html")
 
 
-def groups(request):
-    return render(request)
+# def profile(request):
+#     return render(request)
 
 
-def subject(request):
-    return render(request)
-
-def calendar(request):
-    return render(request)
-
-def grades(request):
-    return render(request)
+# def groups(request):
+#     return render(request)
 
 
-def settings(request):
-    return render(request)
+# def subject(request):
+#     return render(request)
+
+# def calendar(request):
+#     return render(request)
+
+# def grades(request):
+#     return render(request)
+
+
+# def settings(request):
+#     return render(request)
