@@ -1,5 +1,5 @@
 from django.db import models
-from teacher_backend.models import *
+from teacher_backend.models import Grades, Schoolworks, ProfSubject
 
 # Create your models here.
 
@@ -32,22 +32,11 @@ class StudentProfile(models.Model):
 
 # relations per teacher = subject
 class Subject(models.Model):
-    subcode = models.CharField(max_length=50, null=True)
-    subname = models.CharField(max_length=200, null=True)
-    lec = models.FloatField()
-    lab = models.FloatField()
-    unit = models.FloatField()
-    sched = models.CharField(max_length=200, null=True)
-
-    def __str__(self):
-        return self.subname
+    subcode = models.ForeignKey(ProfSubject, on_delete=models.SET_NULL, null=True)
 
 
 class StudGrades(models.Model):
     studgrades = models.ForeignKey(Grades, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.studgrades
 
 
 # class Group(models.Model):
@@ -57,6 +46,3 @@ class StudGrades(models.Model):
 # relations to all the upcoming assignments, quizz, and activities
 class Reminder(models.Model):
     reminders = models.ForeignKey(Schoolworks, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.reminders

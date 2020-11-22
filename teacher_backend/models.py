@@ -1,4 +1,5 @@
 from django.db import models
+from student_backend.models import *
 
 # Create your models here.
 
@@ -42,9 +43,30 @@ class Schoolworks(models.Model):
     title = models.CharField(max_length=100, null=True)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    duedate = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.schoolwork
+        return self.title
+
+
+class Schedule(models.Model):
+    days = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.days
+
+
+class ProfSubject(models.Model):
+    subcode = models.CharField(max_length=50, null=True)
+    subname = models.CharField(max_length=200, null=True)
+    lec = models.FloatField(max_length=3)
+    lab = models.FloatField(max_length=3)
+    unit = models.FloatField(max_length=3)
+    schedule = models.ManyToManyField(Schedule)
+    name = models.ForeignKey(ProfessProfile, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.subname
 
 
 class Grades(models.Model):
@@ -56,6 +78,3 @@ class Grades(models.Model):
 
 # class Group(models.Model):
 # Twillo
-
-# class Reminder(models.Model):
-# relations to all the upcoming assignments, quizz, and activities
